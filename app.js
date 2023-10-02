@@ -1,5 +1,11 @@
 let dataArray = [];
 
+class Game {
+  constructor() {
+    this.dataArray = [];
+  }
+}
+
 async function getData() {
   const results = await fetch("https://restcountries.com/v3.1/all", {
     mode: "cors",
