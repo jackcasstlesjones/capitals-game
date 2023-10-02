@@ -1,9 +1,11 @@
+let dataArray = [];
+
 async function getData() {
   const results = await fetch("https://restcountries.com/v3.1/all", {
     mode: "cors",
   });
   const betterResults = await results.json();
-  return betterResults;
+  dataArray = betterResults;
 }
 
 function randomNumber(max) {
@@ -11,27 +13,26 @@ function randomNumber(max) {
 }
 
 async function pickARandomCountry() {
-  const myData = await getData();
-  const myRandomNumber = randomNumber(myData.length);
-  const randomCountry = myData[myRandomNumber];
+  const myRandomNumber = randomNumber(dataArray.length);
+  const randomCountry = dataArray.splice(myRandomNumber, 1);
+  console.log(dataArray.length);
   return randomCountry;
 }
 
 async function playGame() {
+  await getData();
   const actualCountry = await pickARandomCountry();
   const secondCountry = await pickARandomCountry();
   const thirdCountry = await pickARandomCountry();
 
-  console.log(actualCountry.name.common),
+  console.log(actualCountry[0].name.common),
     console.log(
-      actualCountry.capital[0],
+      actualCountry[0].capital[0],
       "|",
-      secondCountry.capital[0],
+      secondCountry[0].capital[0],
       "|",
-      thirdCountry.capital[0]
+      thirdCountry[0].capital[0]
     );
 }
 
 playGame();
-
-pickARandomCountry();
