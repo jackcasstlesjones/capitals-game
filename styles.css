@@ -1,0 +1,33 @@
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 80%;
+  gap: 42px;
+  margin-top: 200px;
+}
+
+.country-name {
+  text-align: center;
+  width: 400px;
+  font-size: 42px;
+  margin: auto;
+}
+
+.buttons-div {
+  display: flex;
+  gap: 42px;
+}
+
+.capital-button {
+  background-color: grey;
+  padding: 10px;
+  color: white;
+  font-size: 32px;
+}
