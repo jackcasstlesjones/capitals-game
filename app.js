@@ -15,7 +15,6 @@ function randomNumber(max) {
 async function pickARandomCountry() {
   const myRandomNumber = randomNumber(dataArray.length);
   const randomCountry = dataArray.splice(myRandomNumber, 1);
-  console.log(dataArray.length);
   return randomCountry;
 }
 
