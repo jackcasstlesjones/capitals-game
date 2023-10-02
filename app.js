@@ -1,6 +1,7 @@
 class Game {
   constructor() {
     this.dataArray = [];
+    this.capitalsArray = [];
   }
 
   async getData() {
@@ -26,18 +27,50 @@ class Game {
     const actualCountry = await this.pickARandomCountry();
     const secondCountry = await this.pickARandomCountry();
     const thirdCountry = await this.pickARandomCountry();
+    this.capitalsArray.push(
+      actualCountry[0].capital[0],
+      secondCountry[0].capital[0],
+      thirdCountry[0].capital[0]
+    );
+    this.shuffle(this.capitalsArray);
+    console.log(actualCountry[0].name.common);
+    newUIhelper.render(this.capitalsArray);
+  }
 
-    console.log(actualCountry[0].name.common),
-      console.log(
-        actualCountry[0].capital[0],
-        "|",
-        secondCountry[0].capital[0],
-        "|",
-        thirdCountry[0].capital[0]
-      );
+  shuffle(array) {
+    let currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex > 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  }
+}
+class UIHelper {
+  constructor() {}
+  render(array) {
+    array.forEach(function (arrayElement) {
+      console.log(arrayElement);
+    });
+  }
+
+  createButtonElement() {
+    document.createElement("button");
   }
 }
 
+const newUIhelper = new UIHelper();
 const newGame = new Game();
 
 newGame.playGame();
